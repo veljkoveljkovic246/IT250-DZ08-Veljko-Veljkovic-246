@@ -1,0 +1,22 @@
+<html t:type="layout" title="Dodavanje soba"
+    xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+    xmlns:p="tapestry:parameter">
+    
+    <style type="text/css">
+        .container {
+            background-color: #202529;
+            border-radius: 20px;
+            padding-right:30px;           
+}    
+    </style>
+    
+   <div class="container"> 
+         
+        <div class="row">
+            <t:beaneditform object="soba" exclude="id" />
+            <t:grid t:source="sobe" exclude="id" />
+        </div>
+        
+   </div>
+   
+</html>

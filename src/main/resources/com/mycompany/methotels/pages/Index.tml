@@ -1,0 +1,115 @@
+<html t:type="layout" title="MetHotels Index"
+      t:sidebarTitle="Framework Version"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="hero-unit">
+        
+        <style>
+           .container {
+            background-color: #202529;
+            border-radius: 20px;
+            padding-right:30px;
+            
+} 
+
+            
+            
+        </style>
+        
+      <div class="container">  
+          
+        <div class="row">
+                
+        <font size="6" color="white">
+                    <h1>MetHotels</h1>
+        </font>
+        <font size="3" color="white">
+                    <i>Relax &amp; Enjoy</i>
+        </font>
+        
+            <img src="images/zanaslov.jpg" width="100%" height="100%"/>
+            <br></br><br></br>
+
+
+        <div class="col-sm-3">
+            
+            <font color="white">
+                <p>
+                <h3>Galerija</h3>
+                </p>
+            </font>
+            <p>
+            <a href="myfile.htm">Male sobe</a>
+            </p>
+            <p>
+            <a href="myfile.htm">Srednje sobe</a>
+            </p>
+            <p>
+            <a href="myfile.htm">Velike sobe</a>
+            </p>
+            <p>
+            <a href="myfile.htm">Apartmani</a>
+            </p>
+            <p>
+            <a href="myfile.htm">Bazeni</a>
+            </p>
+            <p>
+            <a href="myfile.htm">Usluge</a>
+           </p>
+            
+
+
+        </div> <!-- zatvara div span3 -->
+
+
+            <div class="col-sm-6">
+
+        <p>
+            <font size="4" color="white">
+            	Dobrodo&scaron;li! Luksuzan hotel &quot;Methotels&quot; je kongresno SPA &amp; wellness resort hotelsko zdanje
+		koje se prostire na preko 50.000 m2. Ovaj presti&#382;ni hotelsko-turisti&#269;ki kompleks &#263;e svoje
+		goste o&#269;arati skladnom arhitekturom, modernim enterijerom i najvi&scaron;im nivoom usluge i sadr&#382;aja
+		 iz kog posebno isti&#269;emo wellness centar sa deset bazena sa preko 1000m2 vodenog ogledala.
+ 		Posebnu celinu &#269;ini veliki aqua park sa tri bazena, dvanaest slajdova za odrasle, tri slajda
+		 za decu i mno&scaron;tvom atrakcija.
+		Ukoliko Vam je potreban odmor od svakodnevnog stresa, mir i ti&scaron;ina, porodi&#269;no dru&#382;enje i 
+		relaksacija, lagane &scaron;etnje i izleti na prelepim pla&#382;ama, dani proslave i dru&#382;enja,
+		 organizovani kongresi, sportske pripreme, opu&scaron;tanje, SPA tretmani i 
+		masa&#382;e, treninzi i fitness, avantura u aqua parku, sve to &#263;ete prona&#263;i u hotelu &quot;Methotels&quot;!
+<BR></BR>
+		Ujedno &#263;ete u&#382;ivati u raznovrsnoj svetskoj kuhinji, kao i u doma&#263;im gastronomskim specijalitetima,
+		 koje samo za Vas pripremaju najbolji internacionalni i doma&#263;i kuvari.
+            </font>
+        </p>
+            </div> <!-- zatvara div span6 -->
+            
+            <div class="col-sm-3">
+                
+            <img src="images/hotelnaslovna.jpg" width="100%" height="100%"/>
+            
+            </div> <!-- zatvara div span3 -->
+            
+        </div> <!-- zatvara div row -->
+        
+      </div> <!-- zatvara div container -->
+        
+        
+        
+        
+        
+        
+        
+    </div>
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+</html>
