@@ -1,0 +1,29 @@
+<html t:type="layout" title="Dodavanje hotela"
+    xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+    xmlns:p="tapestry:parameter">
+    
+    <style type="text/css">
+        .container {
+            background-color: #202529;
+            border-radius: 20px;
+            padding-right:30px;           
+}    
+    </style>
+    
+   <div class="container"> 
+         
+        <div class="row">
+            <t:beaneditform object="hotel" exclude="hotelId" >
+            </t:beaneditform>
+        <t:grid source="hoteli" add="delete" row="onehotel"
+        reorder="hotelId, hotelIme, hotelAdresa, delete">
+                <p:deleteCell>
+                        <t:actionlink t:id="delete" context="onehotel.hotelId">Delete</t:actionlink>
+                </p:deleteCell>
+        </t:grid>
+        
+        </div>
+    </div>
+</html>
+
+

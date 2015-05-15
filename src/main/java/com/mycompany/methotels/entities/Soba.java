@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -31,81 +33,92 @@ public class Soba implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
-    private Integer id;
+    @Column(name = "SOBA_ID")
+    private Integer sobaId;
     @Validate("required")
-    @Column(name = "IME")
-    private String ime;
+    @Column(name = "SOBA_IME")
+    private String sobaIme;
     @Validate("required")
-    @Column(name = "SPRAT")
-    private String sprat;
-    @Column(name = "TV")
-    private Boolean tv;
-    @Column(name = "INTERNET")
-    private Boolean internet;
-    @Column(name = "DJAKUZI")
-    private Boolean djakuzi;
+    @Column(name = "SOBA_SPRAT")
+    private String sobaSprat;
+    @Column(name = "SOBA_TV")
+    private Boolean sobaTv;
+    @Column(name = "SOBA_INTERNET")
+    private Boolean sobaInternet;
+    @Column(name = "SOBA_DJAKUZI")
+    private Boolean sobaDjakuzi;
+    @JoinColumn(name = "HOTEL_ID", referencedColumnName = "HOTEL_ID")
+    @ManyToOne(optional = false)
+    private Hotel hotelId;
 
     @Inject
     public Soba() {
     }
 
-    public Soba(Integer id) {
-        this.id = id;
+    public Soba(Integer sobaId) {
+        this.sobaId = sobaId;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getSobaId() {
+        return sobaId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setSobaId(Integer sobaId) {
+        this.sobaId = sobaId;
     }
 
-    public String getIme() {
-        return ime;
+    public String getSobaIme() {
+        return sobaIme;
     }
 
-    public void setIme(String ime) {
-        this.ime = ime;
+    public void setSobaIme(String sobaIme) {
+        this.sobaIme = sobaIme;
     }
 
-    public String getSprat() {
-        return sprat;
+    public String getSobaSprat() {
+        return sobaSprat;
     }
 
-    public void setSprat(String sprat) {
-        this.sprat = sprat;
+    public void setSobaSprat(String sobaSprat) {
+        this.sobaSprat = sobaSprat;
     }
 
-    public Boolean getTv() {
-        return tv;
+    public Boolean getSobaTv() {
+        return sobaTv;
     }
 
-    public void setTv(Boolean tv) {
-        this.tv = tv;
+    public void setSobaTv(Boolean sobaTv) {
+        this.sobaTv = sobaTv;
     }
 
-    public Boolean getInternet() {
-        return internet;
+    public Boolean getSobaInternet() {
+        return sobaInternet;
     }
 
-    public void setInternet(Boolean internet) {
-        this.internet = internet;
+    public void setSobaInternet(Boolean sobaInternet) {
+        this.sobaInternet = sobaInternet;
     }
 
-    public Boolean getDjakuzi() {
-        return djakuzi;
+    public Boolean getSobaDjakuzi() {
+        return sobaDjakuzi;
     }
 
-    public void setDjakuzi(Boolean djakuzi) {
-        this.djakuzi = djakuzi;
+    public void setSobaDjakuzi(Boolean sobaDjakuzi) {
+        this.sobaDjakuzi = sobaDjakuzi;
+    }
+
+    public Hotel getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(Hotel hotelId) {
+        this.hotelId = hotelId;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (sobaId != null ? sobaId.hashCode() : 0);
         return hash;
     }
 
@@ -116,7 +129,7 @@ public class Soba implements Serializable {
             return false;
         }
         Soba other = (Soba) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.sobaId == null && other.sobaId != null) || (this.sobaId != null && !this.sobaId.equals(other.sobaId))) {
             return false;
         }
         return true;
@@ -124,7 +137,7 @@ public class Soba implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.methotels.entities.Soba[ id=" + id + " ]";
+        return "com.mycompany.methotels.entities.Soba[ sobaId=" + sobaId + " ]";
     }
     
 }

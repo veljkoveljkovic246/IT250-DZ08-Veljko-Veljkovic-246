@@ -5,12 +5,17 @@
  */
 package com.mycompany.methotels.pages;
 
+import com.mycompany.methotels.entities.Hotel;
 import com.mycompany.methotels.entities.Soba;
+import com.mycompany.methotels.services.SobaHotelDao;
 import java.util.ArrayList;
+import java.util.List;
+import org.apache.tapestry5.ValueEncoder;
+import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.hibernate.Session;
 
 /**
  *
@@ -20,24 +25,68 @@ public class DodavanjeSoba {
     
     @Property
     private Soba soba;
-    @Inject
-    private Session session;
     
     @Property
-    private ArrayList<Soba> sobe;
-
+    private Soba onesoba;
+    
+    @Inject
+    private Messages messages;
+    
+    @Inject
+    private SobaHotelDao hotelDao;
+    
+    @Property
+    private Hotel hotId;
+    
+    
+    @Property
+    @Persist
+    private List<Hotel> hoteli;
+    public ValueEncoder getEncoder(){
+        return new ValueEncoder<Hotel>(){
+        
+        @Override
+        public String toClient(Hotel h){
+            return String.valueOf(h.getHotelId());
+        }
+        @Override
+        public Hotel toValue(String string){
+            Hotel hot = hotelDao.getHotelById(Integer.parseInt(string));
+            return hot;
+        }
+    };
+    }
+    
+    @Property
+    private List<Soba> sobe;
     void onActivate(){
+        soba = new Soba();
         if (sobe == null){
             sobe = new ArrayList<Soba>();
         }
-        // createCriteria metoda pravi Select * upit nad prosle?enom klasom
-        sobe = (ArrayList<Soba>) session.createCriteria(Soba.class).list();
+        sobe = hotelDao.getListaSvihSoba();
+        hoteli = hotelDao.getListaSvihHotela();
     }
     
     @CommitAfter
     Object onSuccess() {
-        // persist metoda ?uva objekatu bazi podataka
-        session.persist(soba);
+        soba.setHotelId(hotId);
+        hotelDao.dodajSobu(soba);
         return this;
     }
+    
+    public String getHotel(){
+        if (onesoba.getHotelId() != null){
+            return onesoba.getHotelId().getHotelIme();
+        }else {
+            return "";
+        }
+    }
+    
+    @CommitAfter
+    Object onActionFromDelete(int sobaId){
+        hotelDao.obrisiSobu(sobaId);
+        return this;
+    }
+    
 }

@@ -13,8 +13,27 @@
    <div class="container"> 
          
         <div class="row">
-            <t:beaneditform object="soba" exclude="id" />
-            <t:grid t:source="sobe" exclude="id" />
+            <t:beaneditform object="soba" exclude="sobaId" add="hotId">
+                
+                <p:hotId>
+                    <t:label for = "hotId"/>
+                    <t:select t:blankLabel="Odaberi hotel" t:id="hotId" encoder="encoder" model="hoteli" validate="required"/>
+                </p:hotId>
+                    
+            </t:beaneditform>
+            
+            <t:grid source="sobe" exclude="sobeId" add="delete,hotel" row="onesoba" 
+            reorder="sobaId, sobaIme, sobaSprat, sobaTv, sobaInternet, sobaDjakuzi, hotel, delete" >
+                <p:deleteCell>
+                    <t:actionlink t:id="delete" context="onesoba.sobaId">Delete</t:actionlink>
+                </p:deleteCell>   
+                
+                <p:hotelCell>
+                    ${hotel}
+                </p:hotelCell> 
+                    
+                
+                </t:grid>
         </div>
         
    </div>
