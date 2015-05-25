@@ -7,9 +7,11 @@ package com.mycompany.methotels.pages;
 
 import com.mycompany.methotels.entities.Hotel;
 import com.mycompany.methotels.entities.Soba;
+import com.mycompany.methotels.services.ProtectedPage;
 import com.mycompany.methotels.services.SobaHotelDao;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
@@ -21,6 +23,9 @@ import org.apache.tapestry5.ioc.annotations.Inject;
  *
  * @author Veljko
  */
+
+@ProtectedPage
+@RolesAllowed(value={"Admin"})
 public class DodavanjeSoba {
     
     @Property

@@ -1,30 +1,35 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.mycompany.methotels.pages;
 
+import com.mycompany.methotels.data.Role;
 import com.mycompany.methotels.entities.User;
 import com.mycompany.methotels.services.UserDao;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.BeanEditForm;
+import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-public class Login {
+/**
+ *
+ * @author Veljko
+ */
 
-    @Inject
-    private UserDao userDao;
+public class RegistracijaKorisnika {
+
     @Property
-    private User userLogin;
+    private User userReg;
     @SessionState
     private User loggedInUser;
+    @Inject
+    private UserDao userDao;
     @Component
     private BeanEditForm form;
-
-    Object onActivate() {
-        if (loggedInUser.getUserEmail() != null) {
-            return Index.class;
-        }
-        return null;
-    }
 
     public String getMD5Hash(String yourString) {
         try {
@@ -40,17 +45,17 @@ public class Login {
         }
     }
 
+    @CommitAfter
     Object onSuccess() {
-        String password = getMD5Hash(userLogin.getUserSifra());
-        System.out.println(password);
-        User u = userDao.checkUser(userLogin.getUserEmail(), password);
-        if (u != null) {
+        if (!userDao.checkIfEmailExists(userReg.getUserEmail())) {
+            String unhashPassword = userReg.getUserSifra();
+            userReg.setUserSifra(getMD5Hash(unhashPassword));
+            userReg.setUserRola(Role.Korisnik);
+            User u = userDao.registerUsera(userReg);
             loggedInUser = u;
-            System.out.println("Logovan");
             return Index.class;
         } else {
-            form.recordError("Uneli ste pogrešne parametre");
-            System.out.println("losi parametri");
+            form.recordError("Email koji ste uneli vec postoji");
             return null;
         }
     }
